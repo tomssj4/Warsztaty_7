@@ -7,6 +7,7 @@ import pl.coderslab.game.dto.RegistrationFormDTO;
 import pl.coderslab.game.models.User;
 import pl.coderslab.game.repositories.UserRepository;
 
+
 @Service
 @Transactional
 public class RegistrationService {
@@ -20,6 +21,15 @@ public class RegistrationService {
 
     public boolean isEmailAvailable(String email) {
         long count = userRepository.countByEmail(email);
+        if (count > 0){
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    public boolean isLoginAvailable(String login) {
+        long count = userRepository.countByLogin(login);
         if (count > 0){
             return false;
         }else {

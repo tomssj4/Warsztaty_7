@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -32,6 +34,8 @@ public class CharacterClass {
     @Nullable
     private int magicPower;
 
+    private List<Character> characterList = new ArrayList<>();
+
     public CharacterClass() {
     }
 
@@ -44,6 +48,14 @@ public class CharacterClass {
         this.attackSpeed = attackSpeed;
         this.attackDamage = attackDamage;
         this.magicPower = magicPower;
+    }
+
+    public List<Character> getCharacterList() {
+        return characterList;
+    }
+
+    public void setCharacterList(List<Character> characterList) {
+        this.characterList = characterList;
     }
 
     public Long getId() {

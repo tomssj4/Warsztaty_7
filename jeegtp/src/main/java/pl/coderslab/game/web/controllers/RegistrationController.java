@@ -33,13 +33,20 @@ public class RegistrationController {
     public String processRegistrationPage(@ModelAttribute("data") @Valid RegistrationFormDTO data, BindingResult result) {
         if (result.hasErrors()) {
             return "registration";
+        }if (result.hasErrors()) {
+            result.rejectValue("Password", null, "Password must have at least 8!");
+            return "registration";
         }
         if (!data.getPassword().equals(data.getRePassword())) {
-            result.rejectValue("rePassword", null, "Haslo i powtorzone haslo musza byc zgodne.");
+            result.rejectValue("rePassword", null, "Password and RePassword have to be the same.");
+            return "registration";
+        }
+        if (!registrationService.isLoginAvailable(data.getLogin())) {
+            result.rejectValue("login", null, "Login already exists.");
             return "registration";
         }
         if (!registrationService.isEmailAvailable(data.getEmail())) {
-            result.rejectValue("eamil", null, "Email jest juz zajety.");
+            result.rejectValue("email", null, "Email already exists.");
             return "registration";
         }
         registrationService.registerUser(data);

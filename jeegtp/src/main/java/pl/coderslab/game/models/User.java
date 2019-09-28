@@ -2,39 +2,42 @@ package pl.coderslab.game.models;
 
 import org.hibernate.validator.constraints.Email;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Size(min = 5)
+    @Column(name = "login")
     private String login;
     @Email
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
     @Size(min = 8)
+    @Column(name = "password")
     private String password;
-//    @Size(max = 4)
-//    private List<Character> characterList = new ArrayList<>();
+    @Size(max = 4)
+    @OneToMany
+    @JoinColumn(name = "user_character_list")
+    private List<Character> characterList = new ArrayList<>();
 
     public User() {
     }
 
-    public User(String login, String email, String password, List<Character> characterList) {
+    public User(String login, String email, String password) {
         this.login = login;
         this.email = email;
         this.password = password;
-//        this.characterList = characterList;
     }
+
 
     public Long getId() {
         return id;
@@ -68,13 +71,13 @@ public class User {
         this.password = password;
     }
 
-//    public List<Character> getCharacterList() {
-//        return characterList;
-//    }
+    public List<Character> getCharacterList() {
+        return characterList;
+    }
 
-//    public void setCharacterList(List<Character> characterList) {
-//        this.characterList = characterList;
-//    }
+    public void setCharacterList(List<Character> characterList) {
+        this.characterList = characterList;
+    }
 
     @Override
     public boolean equals(Object o) {

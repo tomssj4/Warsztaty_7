@@ -2,10 +2,7 @@ package pl.coderslab.game.models;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -20,17 +17,37 @@ public class Character {
     private String name;
     private Long experiencePoint;
     @NotNull
-//    private CharacterClass characterClass;
+    @ManyToOne
+    private CharacterClass characterClass;
     private LocalDate created;
+
+    private User user;
 
     public Character() {
     }
 
-    public Character(String name, Long experiencePoint, CharacterClass characterClass, LocalDate created) {
+    public Character(String name, Long experiencePoint, CharacterClass characterClass, LocalDate created, User user) {
         this.name = name;
         this.experiencePoint = experiencePoint;
-//        this.characterClass = characterClass;
+        this.characterClass = characterClass;
         this.created = created;
+        this.user = user;
+    }
+
+    public CharacterClass getCharacterClass() {
+        return characterClass;
+    }
+
+    public void setCharacterClass(CharacterClass characterClass) {
+        this.characterClass = characterClass;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Long getId() {
@@ -92,7 +109,7 @@ public class Character {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", experiencePoint=" + experiencePoint +
-//                ", characterClass=" + characterClass +
+                ", characterClass=" + characterClass +
                 ", created=" + created +
                 '}';
     }

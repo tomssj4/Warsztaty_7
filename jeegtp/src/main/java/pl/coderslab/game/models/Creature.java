@@ -13,7 +13,7 @@ public class Creature {
     private Long id;
     private String name;
     private int healthPoints;
-    private int amror;
+    private int armour;
     private int damagePoints;
     private double attackSpeed;
     private int experiencePoints;
@@ -21,10 +21,10 @@ public class Creature {
     public Creature() {
     }
 
-    public Creature(String name, int healthPoints, int amror, int damagePoints, double attackSpeed, int experiencePoints) {
+    public Creature(String name, int healthPoints, int armour, int damagePoints, double attackSpeed, int experiencePoints) {
         this.name = name;
         this.healthPoints = healthPoints;
-        this.amror = amror;
+        this.armour = armour;
         this.damagePoints = damagePoints;
         this.attackSpeed = attackSpeed;
         this.experiencePoints = experiencePoints;
@@ -54,12 +54,12 @@ public class Creature {
         this.healthPoints = healthPoints;
     }
 
-    public int getAmror() {
-        return amror;
+    public int getArmour() {
+        return armour;
     }
 
-    public void setAmror(int amror) {
-        this.amror = amror;
+    public void setArmour(int armour) {
+        this.armour = armour;
     }
 
     public int getDamagePoints() {
@@ -105,7 +105,7 @@ public class Creature {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", healthPoints=" + healthPoints +
-                ", amror=" + amror +
+                ", armour=" + armour +
                 ", damagePoints=" + damagePoints +
                 ", attackSpeed=" + attackSpeed +
                 ", experiencePoints=" + experiencePoints +

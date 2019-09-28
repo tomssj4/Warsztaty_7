@@ -20,45 +20,55 @@
     <title>Rejestracja uzytkownika</title>
 </head>
 <body>
-<form class="text-center border border-light p-5" action="/register">
+<form:form modelAttribute="data" method="post" class="text-center border border-light p-5">
 
-    <p class="h4 mb-4">Sign up</p>
+    <p class="h4 mb-4">Register</p>
 
     <div class="form-row mb-4">
         <div class="col">
             <!-- Login -->
-            <input type="text" id="registerFormLogin" class="form-control" placeholder="Login">
+            <form:input path="login" type="login" id="registerFormLogin" class="form-control" placeholder="Login"/>
+            <form:errors path="login"/>
         </div>
     </div>
 
     <!-- E-mail -->
-    <input type="email" id="registerFormEmail" class="form-control mb-4" placeholder="Email">
+    <form:input path="email" type="email" id="registerFormEmail" class="form-control mb-4" placeholder="Email"/>
+    <form:errors path="email"/>
 
     <!-- Password -->
-    <input type="password" id="registerFormPassword" class="form-control" placeholder="Password" aria-describedby="registerFormPasswordHelpBlock">
+    <form:password path="password" id="password" class="form-control" placeholder="Password" aria-describedby="registerFormPasswordHelpBlock"/>
+    <form:errors path="password"/>
     <small id="registerFormPasswordHelpBlock" class="form-text text-muted mb-4">
         At least 8 characters
     </small>
 
-    <!-- Sign up button -->
-    <button class="btn btn-info my-4 btn-block" type="submit">Sign in</button>
+    <!-- RePassword -->
+    <form:password path="rePassword" id="rePassword" class="form-control" placeholder="RePassword" aria-describedby="registerFormRePasswordHelpBlock"/>
+    <form:errors path="rePassword"/>
+    <small id="registerFormRePasswordHelpBlock" class="form-text text-muted mb-4">
+        Must be the same as above!
+    </small>
 
-    <!-- Social register -->
-    <p>or sign up with:</p>
+    <!-- Register button -->
+    <button class="btn btn-info my-4 btn-block" type="submit">Register</button>
 
-    <a type="button" class="light-blue-text mx-2">
-        <i class="fab fa-facebook-f"></i>
-    </a>
-    <a type="button" class="light-blue-text mx-2">
-        <i class="fab fa-twitter"></i>
-    </a>
-    <a type="button" class="light-blue-text mx-2">
-        <i class="fab fa-linkedin-in"></i>
-    </a>
-    <a type="button" class="light-blue-text mx-2">
-        <i class="fab fa-github"></i>
-    </a>
+<%--    <!-- Social register -->--%>
+<%--    <p>or sign up with:</p>--%>
 
-</form>
+<%--    <a type="button" class="light-blue-text mx-2">--%>
+<%--        <i class="fab fa-facebook-f"></i>--%>
+<%--    </a>--%>
+<%--    <a type="button" class="light-blue-text mx-2">--%>
+<%--        <i class="fab fa-twitter"></i>--%>
+<%--    </a>--%>
+<%--    <a type="button" class="light-blue-text mx-2">--%>
+<%--        <i class="fab fa-linkedin-in"></i>--%>
+<%--    </a>--%>
+<%--    <a type="button" class="light-blue-text mx-2">--%>
+<%--        <i class="fab fa-github"></i>--%>
+<%--    </a>--%>
+
+</form:form>
 </body>
 </html>

@@ -6,4 +6,8 @@ import pl.coderslab.game.models.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     long countByEmail(String email);
+
+    long countByLogin(String login);
+
+    User findByLogin(String login);
 }
