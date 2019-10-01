@@ -26,7 +26,7 @@ public class HomePageController {
 
     @GetMapping("/monster-list")
     public String prepareMonsterList(Model model){
-        model.addAttribute("monster-list", monsterRepository.findAll());
+        model.addAttribute("monster_list", monsterRepository.findAll());
         return "monsters/monsters_list";
     }
 

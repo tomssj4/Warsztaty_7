@@ -16,38 +16,30 @@ public class Character {
     @NotEmpty
     private String name;
     private Long experiencePoint;
+    private int lvl;
     @NotNull
     @ManyToOne
     private CharacterClass characterClass;
     private LocalDate created;
 
-    private User user;
 
     public Character() {
     }
 
-    public Character(String name, Long experiencePoint, CharacterClass characterClass, LocalDate created, User user) {
+    public Character(String name, Long experiencePoint, CharacterClass characterClass, LocalDate created, User user, int lvl) {
         this.name = name;
         this.experiencePoint = experiencePoint;
         this.characterClass = characterClass;
         this.created = created;
-        this.user = user;
+        this.lvl = lvl;
     }
 
-    public CharacterClass getCharacterClass() {
-        return characterClass;
+    public int getLvl() {
+        return lvl;
     }
 
-    public void setCharacterClass(CharacterClass characterClass) {
-        this.characterClass = characterClass;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setLvl(int lvl) {
+        this.lvl = lvl;
     }
 
     public Long getId() {
@@ -74,13 +66,13 @@ public class Character {
         this.experiencePoint = experiencePoint;
     }
 
-//    public CharacterClass getCharacterClass() {
-//        return characterClass;
-//    }
+    public CharacterClass getCharacterClass() {
+        return characterClass;
+    }
 
-//    public void setCharacterClass(CharacterClass characterClass) {
-//        this.characterClass = characterClass;
-//    }
+    public void setCharacterClass(CharacterClass characterClass) {
+        this.characterClass = characterClass;
+    }
 
     public LocalDate getCreated() {
         return created;
@@ -109,7 +101,7 @@ public class Character {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", experiencePoint=" + experiencePoint +
-                ", characterClass=" + characterClass +
+                ", lvl=" + lvl +
                 ", created=" + created +
                 '}';
     }

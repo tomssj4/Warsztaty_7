@@ -2,16 +2,12 @@ package pl.coderslab.game.models;
 
 import com.sun.istack.internal.Nullable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-
+@Entity
 public class CharacterClass {
 
     @Id
@@ -34,7 +30,6 @@ public class CharacterClass {
     @Nullable
     private int magicPower;
 
-    private List<Character> characterList = new ArrayList<>();
 
     public CharacterClass() {
     }
@@ -50,13 +45,6 @@ public class CharacterClass {
         this.magicPower = magicPower;
     }
 
-    public List<Character> getCharacterList() {
-        return characterList;
-    }
-
-    public void setCharacterList(List<Character> characterList) {
-        this.characterList = characterList;
-    }
 
     public Long getId() {
         return id;
