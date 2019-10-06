@@ -35,7 +35,7 @@ public class CharacterService {
     public void createCharacter(CharacterFormDTO newCharacter) {
         Character character = new Character();
         character.setName(newCharacter.getName());
-        character.setExperiencePoint(0L);
+        character.setExperiencePoint(0);
         character.setCharacterClass(createCharacterClass(newCharacter));
         character.setCreated(LocalDate.now());
         character.setLvl(1);

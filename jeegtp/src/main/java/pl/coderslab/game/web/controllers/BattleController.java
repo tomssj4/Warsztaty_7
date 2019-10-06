@@ -19,7 +19,7 @@ public class BattleController {
     @GetMapping("/score/{characterId}/{monsterId}")
     public String prepareScorePage(@PathVariable Long characterId, @PathVariable Long monsterId, Model model){
        model.addAttribute("battle_result", battleService.goBattle(characterId, monsterId));
-
+return "battle";
     }
 
 
