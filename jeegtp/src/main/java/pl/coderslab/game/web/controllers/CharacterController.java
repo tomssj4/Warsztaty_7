@@ -8,6 +8,7 @@ import pl.coderslab.game.dto.CharacterFormDTO;
 import pl.coderslab.game.services.CharacterService;
 import pl.coderslab.game.services.MonsterService;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -34,11 +35,15 @@ public class CharacterController {
     }
 
     @PostMapping("/create")
-    public String proceessToCreateCharacter(@ModelAttribute("new_character") @Valid CharacterFormDTO newCharacter, BindingResult result){
-        if (characterService.isNameAvailable(newCharacter.getName())){
+    public String processToCreateCharacter(@ModelAttribute("new_character") @Valid CharacterFormDTO newCharacter, BindingResult result, HttpServletRequest request){
+        String type = request.getParameter("type");
+        if (!characterService.isNameAvailable(newCharacter.getName())){
             result.rejectValue("Name", null, "This name already exists!");
             return "character/create_character";
         }
+        System.out.println(type);
+        newCharacter.setType(type);
+        newCharacter.getCharacterClass().setType(type);
         characterService.createCharacter(newCharacter);
         return "redirect:/character/list";
     }

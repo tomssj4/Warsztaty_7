@@ -4,15 +4,16 @@ import org.hibernate.validator.constraints.NotEmpty;
 import pl.coderslab.game.models.CharacterClass;
 
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
 
 public class CharacterFormDTO {
 
     @NotEmpty
     private String name;
+
     private Long experiencePoint;
+
     private String type;
-    @NotNull
+
     @ManyToOne
     private CharacterClass characterClass;
 

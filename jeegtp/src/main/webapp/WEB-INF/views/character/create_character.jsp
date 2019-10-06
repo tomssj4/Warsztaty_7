@@ -20,16 +20,17 @@
     <div>
         <div>
             <!-- Character Name -->
-            <form:input path="name" id="name"/>
+            Name: <form:input path="name" id="name"/>
             <form:errors path="name"/>
         </div>
     </div>
 
     <!-- Character class -->
-    <li><form:radiobutton path="type" value="Sorcerer"/>Sorcerer</li>
-    <li><form:radiobutton path="type" value="Driud"/>Driud</li>
-    <li><form:radiobutton path="type" value="Knigth"/>Knigth</li>
-    <li><form:radiobutton path="type" value="Palladyn"/>Palladyn</li>
+    Which class would You like to play?
+    <li><form:radiobutton path="type" name="type" value="Sorcerer"/>Sorcerer</li>
+    <li><form:radiobutton path="type" name="type" value="Driud"/>Driud</li>
+    <li><form:radiobutton path="type" name="type" value="Knigth"/>Knigth</li>
+    <li><form:radiobutton path="type" name="type" value="Palladyn"/>Palladyn</li>
 
     <!-- Create button -->
     <button type="submit">Create</button>

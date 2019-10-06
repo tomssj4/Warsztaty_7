@@ -2,9 +2,11 @@ package pl.coderslab.game.models;
 
 import com.sun.istack.internal.Nullable;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -13,20 +15,28 @@ public class CharacterClass {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @NotNull
     private String type;
+
     @NotNull
     private int healthPoints;
+
     @Nullable
     private int manaPoints;
+
     @Nullable
     private int magicLvl;
+
     @NotNull
     private int armor;
+
     @NotNull
     private double attackSpeed;
+
     @Nullable
     private int attackDamage;
+
     @Nullable
     private int magicPower;
 

@@ -12,11 +12,6 @@
 </head>
 <body>
 <div class="header-warp">
-    <div class="header-social d-flex justify-content-end">
-        <p>Follow us:</p>
-        <a href="#"><i class="fa fa-facebook"></i></a>
-        <a href="#"><i class="fa fa-twitter"></i></a>
-    </div>
     <div class="header-bar-warp d-flex">
         <!-- site logo -->
         <a href="/home" class="site-logo">

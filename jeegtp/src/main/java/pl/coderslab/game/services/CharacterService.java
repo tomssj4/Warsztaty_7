@@ -7,6 +7,7 @@ import pl.coderslab.game.models.Character;
 import pl.coderslab.game.models.CharacterClass;
 import pl.coderslab.game.repositories.CharacterRepository;
 
+import javax.persistence.EntityManager;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
 public class CharacterService {
     private CharacterRepository characterRepository;
 
-    public CharacterService(CharacterRepository characterRepository) {
+    public CharacterService(CharacterRepository characterRepository, EntityManager entityManager) {
         this.characterRepository = characterRepository;
     }
 
@@ -36,8 +37,8 @@ public class CharacterService {
         Character character = new Character();
         character.setName(newCharacter.getName());
         character.setExperiencePoint(0);
-        character.setCharacterClass(createCharacterClass(newCharacter));
-        character.setCreated(LocalDate.now());
+        character.setCreated(LocalDate.now().toString());
+        character.getCharacterClass().setType("Rookie");
         character.setLvl(1);
         characterRepository.save(character);
     }
@@ -57,10 +58,10 @@ public class CharacterService {
         if (newCharacter.getType().equals("Sorcerer") || newCharacter.getType().equals("Druid")) {
             characterClass.setManaPoints(getRandomNUmberBetweenRange(40, 60));
             characterClass.setMagicLvl(1);
-            characterClass.setAttackSpeed((double) getRandomNUmberBetweenRange(180, 200));
-            characterClass.setMagicPower((int) Math.round(characterClass.getManaPoints() * 15 / 100));
+            characterClass.setAttackSpeed(getRandomNUmberBetweenRange(180, 200));
+            characterClass.setMagicPower(Math.round(characterClass.getManaPoints() * 15 / 100));
         } else {
-            characterClass.setAttackSpeed((double) getRandomNUmberBetweenRange(180, 200));
+            characterClass.setAttackSpeed(getRandomNUmberBetweenRange(180, 200));
             characterClass.setAttackDamage(getRandomNUmberBetweenRange(2, 8));
         }
         return characterClass;

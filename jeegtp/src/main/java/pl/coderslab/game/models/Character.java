@@ -3,30 +3,33 @@ package pl.coderslab.game.models;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
+@Table(name = "Characters")
 public class Character {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @NotEmpty
     private String name;
+
     private int experiencePoint;
+
     private int lvl;
-    @NotNull
-    @ManyToOne
+
+    @ManyToOne(cascade = CascadeType.ALL)
     private CharacterClass characterClass;
-    private LocalDate created;
+
+    private String created;
 
 
     public Character() {
     }
 
-    public Character(String name, int experiencePoint, CharacterClass characterClass, LocalDate created, User user, int lvl) {
+    public Character(String name, int experiencePoint, CharacterClass characterClass, String created, User user, int lvl) {
         this.name = name;
         this.experiencePoint = experiencePoint;
         this.characterClass = characterClass;
@@ -74,11 +77,11 @@ public class Character {
         this.characterClass = characterClass;
     }
 
-    public LocalDate getCreated() {
+    public String getCreated() {
         return created;
     }
 
-    public void setCreated(LocalDate created) {
+    public void setCreated(String created) {
         this.created = created;
     }
 
