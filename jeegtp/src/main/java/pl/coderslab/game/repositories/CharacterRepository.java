@@ -8,6 +8,5 @@ public interface CharacterRepository extends JpaRepository <Character, Long> {
     long countByName (String name);
 
 
-
-
+    Character findById(Long characterId);
 }

@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity
-public class Creature {
+public class Monster {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,10 +18,10 @@ public class Creature {
     private double attackSpeed;
     private int experiencePoints;
 
-    public Creature() {
+    public Monster() {
     }
 
-    public Creature(String name, int healthPoints, int armour, int damagePoints, double attackSpeed, int experiencePoints) {
+    public Monster(String name, int healthPoints, int armour, int damagePoints, double attackSpeed, int experiencePoints) {
         this.name = name;
         this.healthPoints = healthPoints;
         this.armour = armour;
@@ -90,8 +90,8 @@ public class Creature {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Creature creature = (Creature) o;
-        return id == creature.id;
+        Monster monster = (Monster) o;
+        return id == monster.id;
     }
 
     @Override

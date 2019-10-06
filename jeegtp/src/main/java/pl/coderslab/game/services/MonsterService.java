@@ -3,7 +3,7 @@ package pl.coderslab.game.services;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.game.models.Character;
-import pl.coderslab.game.models.Creature;
+import pl.coderslab.game.models.Monster;
 import pl.coderslab.game.repositories.MonsterRepository;
 
 @Service
@@ -18,19 +18,19 @@ public class MonsterService {
         this.characterService = characterService;
     }
 
-    public Creature getRandomMonster(Long characterId){
-        Creature creature = new Creature();
+    public Monster getRandomMonster(Long characterId){
+        Monster monster = new Monster();
         Character character = characterService.readCharacter(characterId);
         if (character.getLvl() <= 10){
-           creature = monsterRepository.findOne(Long.valueOf(getRandomNUmberBetweenRange(1,10)));
+           monster = monsterRepository.findOne(Long.valueOf(getRandomNUmberBetweenRange(1,10)));
         }
         if (character.getLvl() > 10 && character.getLvl() <= 30){
-            creature = monsterRepository.findOne(Long.valueOf(getRandomNUmberBetweenRange(11, 20)));
+            monster = monsterRepository.findOne(Long.valueOf(getRandomNUmberBetweenRange(11, 20)));
         }
         if (character.getLvl() > 30){
-            creature = monsterRepository.findOne(Long.valueOf(getRandomNUmberBetweenRange(21, 50)));
+            monster = monsterRepository.findOne(Long.valueOf(getRandomNUmberBetweenRange(21, 50)));
         }
-        return creature;
+        return monster;
     }
 
     private int getRandomNUmberBetweenRange(int min, int max) {

@@ -15,7 +15,7 @@ public class Character {
     private Long id;
     @NotEmpty
     private String name;
-    private Long experiencePoint;
+    private int experiencePoint;
     private int lvl;
     @NotNull
     @ManyToOne
@@ -26,7 +26,7 @@ public class Character {
     public Character() {
     }
 
-    public Character(String name, Long experiencePoint, CharacterClass characterClass, LocalDate created, User user, int lvl) {
+    public Character(String name, int experiencePoint, CharacterClass characterClass, LocalDate created, User user, int lvl) {
         this.name = name;
         this.experiencePoint = experiencePoint;
         this.characterClass = characterClass;
@@ -58,11 +58,11 @@ public class Character {
         this.name = name;
     }
 
-    public Long getExperiencePoint() {
+    public int getExperiencePoint() {
         return experiencePoint;
     }
 
-    public void setExperiencePoint(Long experiencePoint) {
+    public void setExperiencePoint(int experiencePoint) {
         this.experiencePoint = experiencePoint;
     }
 
