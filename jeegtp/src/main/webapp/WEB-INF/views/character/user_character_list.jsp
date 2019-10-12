@@ -20,7 +20,7 @@
 <!-- Page section -->
 <div class="main-page">
     <div class="text-center">
-        <h1>Character List:</h1>q
+        <h1>Character List:</h1>
         <c:choose>
             <c:when test="${character_list != null}">
                 <ul>

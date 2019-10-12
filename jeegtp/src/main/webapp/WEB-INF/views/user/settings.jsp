@@ -39,7 +39,7 @@
                 onclick="window.location.href = '${pageContext.request.contextPath}/user/settings/password'">Change
         </button>
     </div>
-    <div class="text-change">
+    <div class="text-center">
         <p>Delete account.</p>
         <button type="button" class="btn btn-danger"
                 onclick="window.location.href = '${pageContext.request.contextPath}/user/settings/delete'">DELETE
