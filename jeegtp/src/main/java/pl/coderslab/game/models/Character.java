@@ -25,6 +25,10 @@ public class Character {
 
     private String created;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
 
     public Character() {
     }
@@ -35,6 +39,14 @@ public class Character {
         this.characterClass = characterClass;
         this.created = created;
         this.lvl = lvl;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public int getLvl() {

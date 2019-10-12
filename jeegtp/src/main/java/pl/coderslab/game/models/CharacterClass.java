@@ -29,7 +29,7 @@ public class CharacterClass {
     private int magicLvl;
 
     @NotNull
-    private int armor;
+    private int armour;
 
     @NotNull
     private double attackSpeed;
@@ -44,12 +44,12 @@ public class CharacterClass {
     public CharacterClass() {
     }
 
-    public CharacterClass(String type, int healthPoints, int manaPoints, int magicLvl, int armor, double attackSpeed, int attackDamage, int magicPower) {
+    public CharacterClass(String type, int healthPoints, int manaPoints, int magicLvl, int armour, double attackSpeed, int attackDamage, int magicPower) {
         this.type = type;
         this.healthPoints = healthPoints;
         this.manaPoints = manaPoints;
         this.magicLvl = magicLvl;
-        this.armor = armor;
+        this.armour = armour;
         this.attackSpeed = attackSpeed;
         this.attackDamage = attackDamage;
         this.magicPower = magicPower;
@@ -96,12 +96,12 @@ public class CharacterClass {
         this.magicLvl = magicLvl;
     }
 
-    public int getArmor() {
-        return armor;
+    public int getArmour() {
+        return armour;
     }
 
-    public void setArmor(int armor) {
-        this.armor = armor;
+    public void setArmour(int armour) {
+        this.armour = armour;
     }
 
     public double getAttackSpeed() {
@@ -149,7 +149,7 @@ public class CharacterClass {
                 ", healthPoints=" + healthPoints +
                 ", manaPoints=" + manaPoints +
                 ", magicLvl=" + magicLvl +
-                ", armor=" + armor +
+                ", armor=" + armour +
                 ", attackSpeed=" + attackSpeed +
                 ", attackDamage=" + attackDamage +
                 ", magicPower=" + magicPower +

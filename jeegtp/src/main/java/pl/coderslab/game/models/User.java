@@ -24,9 +24,8 @@ public class User {
     @Size(min = 8)
     @Column(name = "password")
     private String password;
-    @Size(max = 4)
-    @OneToMany
-    @JoinColumn(name = "user_character_list")
+
+    @OneToMany(mappedBy = "user")
     private List<Character> characterList = new ArrayList<>();
 
     public User() {

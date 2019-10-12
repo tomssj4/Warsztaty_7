@@ -4,20 +4,13 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.Size;
 
-public class LoginFormDTO {
+public class UserPasswordFormDTO {
 
-    @NotBlank
-    private String login;
-    @NotBlank
+    @Size(min = 8)
     private String password;
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
+    @NotBlank
+    @Size(min = 8)
+    private String rePassword;
 
     public String getPassword() {
         return password;
@@ -25,5 +18,13 @@ public class LoginFormDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRePassword() {
+        return rePassword;
+    }
+
+    public void setRePassword(String rePassword) {
+        this.rePassword = rePassword;
     }
 }

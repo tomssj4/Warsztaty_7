@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.game.services.BattleService;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping("/battle")
 public class BattleController {
@@ -17,9 +19,10 @@ public class BattleController {
     }
 
     @GetMapping("/score/{characterId}/{monsterId}")
-    public String prepareScorePage(@PathVariable Long characterId, @PathVariable Long monsterId, Model model){
+    public String prepareScorePage(@PathVariable Long characterId, @PathVariable Long monsterId, Model model, HttpServletRequest request){
        model.addAttribute("battle_result", battleService.goBattle(characterId, monsterId));
-return "battle";
+        System.out.println(request.getParameter("monsterId"));
+return "score";
     }
 
 

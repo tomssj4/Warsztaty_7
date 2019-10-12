@@ -22,13 +22,13 @@ public class MonsterService {
         Monster monster = new Monster();
         Character character = characterService.readCharacter(characterId);
         if (character.getLvl() <= 10){
-           monster = monsterRepository.findOne(Long.valueOf(getRandomNUmberBetweenRange(1,10)));
+           monster = monsterRepository.findOne(Long.valueOf(getRandomNUmberBetweenRange(1,9)));
         }
         if (character.getLvl() > 10 && character.getLvl() <= 30){
-            monster = monsterRepository.findOne(Long.valueOf(getRandomNUmberBetweenRange(11, 20)));
+            monster = monsterRepository.findOne(Long.valueOf(getRandomNUmberBetweenRange(10, 19)));
         }
         if (character.getLvl() > 30){
-            monster = monsterRepository.findOne(Long.valueOf(getRandomNUmberBetweenRange(21, 50)));
+            monster = monsterRepository.findOne(Long.valueOf(getRandomNUmberBetweenRange(20, 49)));
         }
         return monster;
     }

@@ -5,19 +5,24 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.game.dto.CharacterFormDTO;
 import pl.coderslab.game.models.Character;
 import pl.coderslab.game.models.CharacterClass;
+import pl.coderslab.game.models.User;
 import pl.coderslab.game.repositories.CharacterRepository;
+import pl.coderslab.game.repositories.UserRepository;
 
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
-import java.util.List;
 
 @Service
 @Transactional
 public class CharacterService {
     private CharacterRepository characterRepository;
+    private UserRepository userRepository;
+    private UserService userService;
 
-    public CharacterService(CharacterRepository characterRepository, EntityManager entityManager) {
+    public CharacterService(CharacterRepository characterRepository, EntityManager entityManager, UserRepository userRepository, UserService userService) {
         this.characterRepository = characterRepository;
+        this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     public boolean isNameAvailable(String name) {
@@ -33,29 +38,31 @@ public class CharacterService {
        return characterRepository.findOne(id);
     }
 
-    public void createCharacter(CharacterFormDTO newCharacter) {
+    public void createCharacter(CharacterFormDTO newCharacter, CharacterClass characterClass, String userLogin) {
+        User user = userRepository.findByLogin(userLogin);
         Character character = new Character();
         character.setName(newCharacter.getName());
         character.setExperiencePoint(0);
         character.setCreated(LocalDate.now().toString());
-        character.getCharacterClass().setType("Rookie");
         character.setLvl(1);
+        character.setCharacterClass(characterClass);
+        user.getCharacterList().add(character);
+        character.setUser(user);
         characterRepository.save(character);
+        userService.updateUser(user);
     }
 
     public void deleteCharacter(Long id){
         characterRepository.delete(id);
     }
 
-    public List<Character> getList() {
-        return characterRepository.findAll();
-    }
 
-    private CharacterClass createCharacterClass(CharacterFormDTO newCharacter) {
+    public CharacterClass createCharacterClass(String type) {
         CharacterClass characterClass = new CharacterClass();
         characterClass.setHealthPoints(getRandomNUmberBetweenRange(80, 120));
-        characterClass.setArmor(getRandomNUmberBetweenRange(1, 5));
-        if (newCharacter.getType().equals("Sorcerer") || newCharacter.getType().equals("Druid")) {
+        characterClass.setArmour(getRandomNUmberBetweenRange(1, 5));
+        characterClass.setType(type);
+        if (type.equals("Sorcerer") || type.equals("Druid")) {
             characterClass.setManaPoints(getRandomNUmberBetweenRange(40, 60));
             characterClass.setMagicLvl(1);
             characterClass.setAttackSpeed(getRandomNUmberBetweenRange(180, 200));

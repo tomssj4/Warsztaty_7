@@ -1,0 +1,33 @@
+.main-page{
+    background-image: url("../img/index_wallpaper.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    top: 160px;
+    width: 100%;
+    height: 100%;
+}
+table, td, th {
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 15px;
+}
+
+.character-table{
+    float: left;
+}
+
+.monster-table{
+    float: right;
+}

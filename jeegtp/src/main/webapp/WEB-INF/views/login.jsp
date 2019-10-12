@@ -12,6 +12,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -25,43 +27,45 @@
             crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a0b22afb83.js"></script>
 
-    <title>Logowanie</title>
+    <title>Login</title>
 </head>
 <body>
-<form method="post" action="/login" class="text-center border border-light p-5">
+<div>
+<form:form modelAttribute="login" method="post" class="text-center border border-light p-5">
 
     <c:if test="${not empty errorMessge}">
-        <div style="color:red; font-weight: bold; margin: 30px 0px;">${errorMessge}</div>
+        <div style="color:red; font-weight: bold; margin: 30px 0;">${errorMessge}</div>
     </c:if>
 
     <p class="h4 mb-4">Login</p>
 
     <!-- Login -->
-    <input type="text" name="login" id="loginFormLogin" class="form-control mb-4" placeholder="Login"/>
+    <form:input path="login" id="loginFormLogin" class="form-control mb-4" placeholder="Login"/>
+    <form:errors path="login"/>
 
     <!-- Password -->
-    <input type="password" name="password" id="loginFormPassword" class="form-control mb-4" placeholder="Password"/>
+    <form:password path="password" id="loginFormPassword" class="form-control mb-4" placeholder="Password"/>
 
-    <div class="d-flex justify-content-around">
-        <div>
-            <!-- Remember me -->
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
-                <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
-            </div>
-        </div>
-        <%--        <div>--%>
-        <%--            <!-- Forgot password -->--%>
-        <%--            <a href="">Forgot password?</a>--%>
-        <%--        </div>--%>
-    </div>
+<%--    <div class="d-flex justify-content-around">--%>
+<%--        <div>--%>
+<%--            <!-- Remember me -->--%>
+<%--            <div class="custom-control custom-checkbox">--%>
+<%--                <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">--%>
+<%--                <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--                <div>--%>
+<%--                    <!-- Forgot password -->--%>
+<%--                    <a href="">Forgot password?</a>--%>
+<%--                </div>--%>
+<%--    </div>--%>
 
     <!-- Sign in button -->
     <button class="btn btn-info btn-block" type="submit">Login</button>
 
     <%--    <div class="text-center">--%>
     <p>Not a member?
-        <a href="/register">Register</a>
+        <a href="${pageContext.request.contextPath}/register">Register</a>
     </p>
 
     <%--        <p>or login with:</p>--%>
@@ -78,7 +82,7 @@
     <%--            <i class="fab fa-github"></i>--%>
     <%--        </a>--%>
     <%--    </div>--%>
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-</form>
+</form:form>
+</div>
 </body>
 </html>

@@ -10,33 +10,39 @@
 <html>
 <head>
     <title>Create character</title>
+
+    <!-- Stylesheet -->
+    <link href="../../../css/index2.css" rel="stylesheet" type="text/css">
+
     <jsp:include page="../header.jsp"/>
 </head>
 <body>
-<form:form modelAttribute="new_character" method="post">
+<!-- Page section -->
+<div class="main-page" style="{position: absolute; top: 50%;}">
+    <form:form modelAttribute="new_character" method="post" class = "text-center">
 
-    <p>New Character</p>
+        <p>New Character</p>
 
-    <div>
         <div>
-            <!-- Character Name -->
-            Name: <form:input path="name" id="name"/>
-            <form:errors path="name"/>
+            <div>
+                <!-- Character Name -->
+                Name: <form:input path="name" id="name"/>
+                <form:errors path="name"/>
+            </div>
         </div>
-    </div>
 
-    <!-- Character class -->
-    Which class would You like to play?
-    <li><form:radiobutton path="type" name="type" value="Sorcerer"/>Sorcerer</li>
-    <li><form:radiobutton path="type" name="type" value="Driud"/>Driud</li>
-    <li><form:radiobutton path="type" name="type" value="Knigth"/>Knigth</li>
-    <li><form:radiobutton path="type" name="type" value="Palladyn"/>Palladyn</li>
+        <!-- Character class -->
+        Which class would You like to play?
+        <li><form:radiobutton path="type" name="type" value="Sorcerer"/>Sorcerer</li>
+        <li><form:radiobutton path="type" name="type" value="Druid"/>Druid</li>
+        <li><form:radiobutton path="type" name="type" value="Knight"/>Knight</li>
+        <li><form:radiobutton path="type" name="type" value="Palladyn"/>Palladyn</li>
 
-    <!-- Create button -->
-    <button type="submit">Create</button>
+        <!-- Create button -->
+        <button type="submit">Create</button>
 
 
-</form:form>
-
+    </form:form>
+</div>
 </body>
 </html>
